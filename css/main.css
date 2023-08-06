@@ -9,12 +9,21 @@
 body {
   font-family: "Montserrat", sans-serif;
   /* overflow-x: hidden; */
+  position: relative;
 }
 
 .wrapper {
+  /* transform: translateX(100vw); */
+  transition: transform 0.4s ease;
+  position: absolute;
+}
+.wrapper2 {
   transform: translateX(100vw);
 }
 
+.wrapper3 {
+  transform: translateX(200vw);
+}
 .presentation {
   /* border: 2px solid; */
   width: 60%;
@@ -85,6 +94,10 @@ article img {
   width: 100%;
 }
 
+article h2 {
+  line-height: 5rem;
+}
+
 artilce > p,
 h2,
 figcaption {
@@ -98,5 +111,5 @@ article figcaption {
 
 article p {
   padding: 2rem;
-  line-height: 1.2rem;
+  line-height: 1.5em;
 }

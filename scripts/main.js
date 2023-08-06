@@ -1,28 +1,72 @@
+let currentIndex = 1;
 function selectAllTypes(typeName) {
   const el = document.querySelectorAll(`[${typeName}]`);
   return el;
 }
 function scaleElement(el, size) {
-  console.log("event started");
   test = el.children[0];
   test.style.transform = `scale(${size})`;
 }
 
-function scaleBackElement(el, size) {
+function scaleBackElement(el) {
   test = el.children[0];
   test.style.transform = "scale(1)";
 }
+function moveElement(clickedElement, destinatedElement) {
+  // I need to continue here
+  console.log(clickedElement);
+  if (clickedElement.classList.contains("left-button")) {
+    console.log(currentIndex);
 
-function moveElement()
+    console.log(currentIndex);
+    let convertString = currentIndex.toString();
+    convertVar = "." + destinatedElement + convertString;
+    let data = document.querySelector(convertVar);
+    if (data.classList.contains("wrapper2")) {
+      console.log("hello");
+      data.style.transform = "translateX(100vw)";
+      console.log(currentIndex);
+      currentIndex--;
+    }
+    if (data.classList.contains("wrapper3")) {
+      console.log("hello");
+      data.style.transform = "translateX(100vw)";
+      console.log(currentIndex);
+      currentIndex--;
+    }
+  }
+
+  if (clickedElement.classList.contains("right-button")) {
+    if (currentIndex < 3) {
+      currentIndex++;
+    }
+    let convertString = currentIndex.toString();
+    convertVar = "." + destinatedElement + convertString;
+    console.log(convertVar);
+    let data = document.querySelector(convertVar);
+
+    console.log(data);
+
+    if (data.classList.contains("wrapper2")) {
+      console.log("hello");
+      data.style.transform = "translateX(0)";
+      console.log(currentIndex);
+    }
+    if (data.classList.contains("wrapper3")) {
+      console.log("hello");
+      data.style.transform = "translateX(0)";
+      console.log(currentIndex);
+    }
+  }
+}
 
 function hoverAction(dataAttribute, selectedElement, size) {
   const element = document.querySelectorAll(
     `[${dataAttribute}="${selectedElement}"]`
   );
-  // console.log(element);
+  console.log(element);
+  console.log("hoveraction");
   element.forEach((e) => {
-    console.log(e);
-
     e.addEventListener("mouseover", () => {
       scaleElement(e, size);
     });
@@ -33,43 +77,36 @@ function hoverAction(dataAttribute, selectedElement, size) {
   });
 }
 
-function moveAction(dataAttribute, selectedElement, destinatedElement, value) {
+function moveAction(dataAttribute, selectedElement, destinatedElement) {
   const element = document.querySelectorAll(
     `[${dataAttribute}="${selectedElement}"]`
   );
+  console.log(element);
+  console.log("move-action");
   element.forEach((e) => {
     e.addEventListener("click", () => {
-      moveElement(e, destinatedElement, value)
+      // const frame1 = "1";
+      // const frame2 = "2";
+      // const result2 = "." + destinatedElement + frame2;
+      const convertToElement = document.querySelector(`.${destinatedElement}`);
+      moveElement(e, destinatedElement);
     });
   });
 }
 
-getAllELementsPresentation(1.2);
-
-function getTheOffsetOfElement(dataAttribute, selectedElement) {
-  const element = document.querySelectorAll(
-    `[${dataAttribute}="${selectedElement}"]`
-  );
-  console.log(element[0]);
-  const offsetLeft = window.getComputedStyle(element[0]).transform;
-  return offsetLeft;
-}
-function getAllELementsPresentation(sizeChangesForScaling) {
+function getAllELementsPresentation(sizeChangesForScaling, destinatedElement) {
   const placeholder = "data-presentation";
+  let dataValue = [];
   getData = selectAllTypes(placeholder);
   getData.forEach((element) => {
-    const dataValue = element.getAttribute(placeholder);
-    if (dataValue == "button-carrousel") {
-      hoverAction(placeholder, dataValue, sizeChangesForScaling);
-      moveAction(placeholder, dataValue, destinatedElement, value);
-    }
-    if (dataValue == "wrapper") {
-      const testvalue = getTheOffsetOfElement(placeholder, dataValue);
-      if (testvalue == "matrix(1, 0, 0, 1, 200, 0)") {
-        console.log("true");
-      } else {
-        console.log("not true");
-      }
-    }
+    dataValue.push(element.getAttribute(placeholder));
   });
+  console.log(dataValue.find((item) => item === "button-carrousel"));
+  const test2 = dataValue.find((item) => item === "button-carrousel");
+  if (test2 == "button-carrousel") {
+    hoverAction(placeholder, test2, sizeChangesForScaling);
+    moveAction(placeholder, test2, destinatedElement);
+  }
 }
+
+getAllELementsPresentation(1.2, "wrapper");
