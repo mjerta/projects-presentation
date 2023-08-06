@@ -1,5 +1,3 @@
-Added all nessecary section in the HTML
+Still in progress
 
-Added header section with the name of this project in h1
-Added the section for the article with the image
-Added the buttons to move the carrousel
+Getting all functions in place - js
