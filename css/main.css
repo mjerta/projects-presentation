@@ -1,0 +1,115 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+  /* overflow-x: hidden; */
+  position: relative;
+}
+
+.wrapper {
+  /* transform: translateX(100vw); */
+  transition: transform 0.4s ease;
+  position: absolute;
+}
+.wrapper2 {
+  transform: translateX(100vw);
+}
+
+.wrapper3 {
+  transform: translateX(200vw);
+}
+.presentation {
+  /* border: 2px solid; */
+  width: 60%;
+  min-height: 60%;
+  position: relative;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  text-transform: capitalize;
+}
+.wrapper {
+  background-color: rgb(255, 255, 255);
+  /* width: 100vw; */
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.presentation .button-carrousel {
+  position: relative;
+  cursor: pointer;
+  border-radius: 50%;
+  position: absolute;
+  border: none;
+  width: 100px;
+  height: 100px;
+  bottom: 0;
+  top: 0;
+  margin: auto 0;
+  background: rgb(193, 228, 182);
+}
+.presentation button span {
+  display: inline-block;
+  width: 50%;
+  height: 50%;
+  /* background: rebeccapurple; */
+  background-image: url(../images/arrow.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position-y: center;
+}
+.presentation .left-button {
+  transform: rotate(180deg);
+}
+
+.presentation h1 {
+  font-size: 3rem;
+  line-height: 10rem;
+}
+
+.left-button {
+  left: -150px;
+}
+
+.button-carrousel span {
+  transition: transform 0.3s ease;
+}
+
+.right-button {
+  right: -150px;
+}
+
+article img {
+  width: 100%;
+}
+
+article h2 {
+  line-height: 5rem;
+}
+
+artilce > p,
+h2,
+figcaption {
+  text-align: center;
+}
+
+article figcaption {
+  font-size: 0.85rem;
+  line-height: 2rem;
+}
+
+article p {
+  padding: 2rem;
+  line-height: 1.5em;
+}
